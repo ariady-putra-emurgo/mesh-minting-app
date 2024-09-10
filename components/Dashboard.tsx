@@ -57,6 +57,18 @@ export default function Dashboard(props: { wallet: BrowserWallet; address: strin
             .mint("1000", policyID, assetNameHex)
             .mintingScript(Script.MintAlwaysTrue)
             .mintRedeemerValue(redeemer)
+            .metadataValue(
+              "721",
+              // https://github.com/cardano-foundation/CIPs/tree/master/CIP-0025#version-1
+              {
+                [policyID]: {
+                  [assetName]: {
+                    name: assetName,
+                    image: "https://avatars.githubusercontent.com/u/1",
+                  },
+                },
+              }
+            )
             .selectUtxosFrom(utxos)
             .txInCollateral(input.txHash, input.outputIndex)
             .changeAddress(address)
@@ -121,6 +133,18 @@ export default function Dashboard(props: { wallet: BrowserWallet; address: strin
             .mint("200", policyID, assetNameHex)
             .mintingScript(Script.MintCheckRedeemer)
             .mintRedeemerValue(redeemer)
+            .metadataValue(
+              "721",
+              // https://github.com/cardano-foundation/CIPs/tree/master/CIP-0025#version-1
+              {
+                [policyID]: {
+                  [assetName]: {
+                    name: assetName,
+                    image: "https://avatars.githubusercontent.com/u/2",
+                  },
+                },
+              }
+            )
             .selectUtxosFrom(utxos)
             .txInCollateral(input.txHash, input.outputIndex)
             .changeAddress(address)
@@ -185,6 +209,18 @@ export default function Dashboard(props: { wallet: BrowserWallet; address: strin
             .mint("30", policyID, assetNameHex)
             .mintingScript(Script.MintCheckRedeemer2)
             .mintRedeemerValue(redeemer)
+            .metadataValue(
+              "721",
+              // https://github.com/cardano-foundation/CIPs/tree/master/CIP-0025#version-1
+              {
+                [policyID]: {
+                  [assetName]: {
+                    name: assetName,
+                    image: "https://avatars.githubusercontent.com/u/3",
+                  },
+                },
+              }
+            )
             .selectUtxosFrom(utxos)
             .txInCollateral(input.txHash, input.outputIndex)
             .changeAddress(address)
@@ -270,6 +306,18 @@ export default function Dashboard(props: { wallet: BrowserWallet; address: strin
             .mint("1", policyID, assetNameHex)
             .mintingScript(mintingValidator.code)
             .mintRedeemerValue(redeemer)
+            .metadataValue(
+              "721",
+              // https://github.com/cardano-foundation/CIPs/tree/master/CIP-0025#version-1
+              {
+                [policyID]: {
+                  [assetName]: {
+                    name: assetName,
+                    image: "https://avatars.githubusercontent.com/u/4",
+                  },
+                },
+              }
+            )
             .selectUtxosFrom(utxos)
             .txIn(utxo.input.txHash, utxo.input.outputIndex)
             .txInCollateral(input.txHash, input.outputIndex)
@@ -294,7 +342,7 @@ export default function Dashboard(props: { wallet: BrowserWallet; address: strin
 
           const mintingValidator: PlutusScript = {
             version: "V3",
-            code: "59023259022f010100332323232323232323232322253330053232323232533300a3370e900018061baa00113253333330130031533300b3370e900018069baa0031533300f300e375400626464a66601a64a66602400201a264a666026602c0042a66601e66e1d2002375a60240022944038038c050004c94ccc038cdc3a400460206ea800452f5bded8c026eacc050c044dd500099198008009bab3014301530153015301500322533301300114c0103d87a80001323232325333013337220120042a66602666e3c0240084cdd2a4000660306e980052f5c02980103d87a80001330060060033756602a0066eb8c04c008c05c008c0540044c8cc004004008894ccc04c004528099299980819baf301630133754602c00401a29444cc00c00c004c0580045281bac3012001300e375400a0120120120120120126eb8c040c034dd50008b1807980800118070009807001180600098041baa001149854cc01924011856616c696461746f722072657475726e65642066616c73650013656153300349010f5f72656465656d65723a20566f69640016153300249159657870656374205b50616972285f2c2031295d203d0a202020206d696e740a2020202020207c3e206173736574732e746f6b656e7328706f6c6963795f6964290a2020202020207c3e20646963742e746f5f7061697273282900165734ae7155ceaab9e5573eae815d0aba2574898127d8799f5820d07f5ac7fc2811597f376d9311d570459eececcada323f11789f06eb874c418c00ff0001",
+            code: "59023259022f010100332323232323232323232322253330053232323232533300a3370e900018061baa00113253333330130031533300b3370e900018069baa0031533300f300e375400626464a66601a64a66602400201a264a666026602c0042a66601e66e1d2002375a60240022944038038c050004c94ccc038cdc3a400460206ea800452f5bded8c026eacc050c044dd500099198008009bab3014301530153015301500322533301300114c0103d87a80001323232325333013337220120042a66602666e3c0240084cdd2a4000660306e980052f5c02980103d87a80001330060060033756602a0066eb8c04c008c05c008c0540044c8cc004004008894ccc04c004528099299980819baf301630133754602c00401a29444cc00c00c004c0580045281bac3012001300e375400a0120120120120120126eb8c040c034dd50008b1807980800118070009807001180600098041baa001149854cc01924011856616c696461746f722072657475726e65642066616c73650013656153300349010f5f72656465656d65723a20566f69640016153300249159657870656374205b50616972285f2c2031295d203d0a202020206d696e740a2020202020207c3e206173736574732e746f6b656e7328706f6c6963795f6964290a2020202020207c3e20646963742e746f5f7061697273282900165734ae7155ceaab9e5573eae815d0aba2574898127d8799f58201af7a895ebad5c55a842b3f587de25d5fcda3106a9caead17d1179804ae0da9b00ff0001",
           };
 
           const policyID = resolveScriptHash(mintingValidator.code, "V3");

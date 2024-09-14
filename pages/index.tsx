@@ -12,8 +12,9 @@ export default function IndexPage() {
   const [result, setResult] = useState("");
 
   function handleError(error: any) {
-    console.log(error);
-    setResult("An error occured, see console.log");
+    const { info, message } = error;
+    setResult(`${info ?? message ?? error}`);
+    console.error({ error });
   }
 
   async function onConnectWallet({ name }: Wallet) {
